@@ -13,6 +13,14 @@ sudo chown -R $(id -u):$(id -g) /mnt/media/games
 touch game_server/docker-compose.yml
 ```
 
+## Check NVIDIA
+```
+docker exec -it steam-headless-steam-headless-1 nvidia-smi
+```
+
+## Open server on browser
+`http://ip_server:8083/`
+
 ## On client (Arch)
 ```
 sudo pacman -S steam
