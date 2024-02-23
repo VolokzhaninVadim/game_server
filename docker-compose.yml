@@ -3,6 +3,7 @@ services:
     image: josh5/steam-headless:latest
     restart: unless-stopped
     runtime: ${DOCKER_RUNTIME}
+    container_name: game_server
     ## NOTE: This config uses privileged to access to host to be able to access the required devices
     privileged: true
     shm_size: ${SHM_SIZE}
