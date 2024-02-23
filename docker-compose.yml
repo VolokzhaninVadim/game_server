@@ -1,25 +1,20 @@
-version: '3.6'
 services:
   steam-headless:
     image: josh5/steam-headless:latest
-    container_name: game_server
     restart: unless-stopped
     runtime: ${DOCKER_RUNTIME}
-    shm_size: '2G'
+    ## NOTE: This config uses privileged to access to host to be able to access the required devices
+    privileged: true
+    shm_size: ${SHM_SIZE}
     ipc: host # Could also be set to 'shareable'
     ulimits:
       nofile:
         soft: 1024
         hard: 524288
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
-      - SYS_NICE
-    security_opt:
-      - seccomp:unconfined
-      - apparmor:unconfined
 
     # NETWORK:
+    ## NOTE:  With this configuration, if we do not use the host network, then physical device input
+    ##        is not possible and your USB connected controllers will not work in steam games.
     network_mode: host
     hostname: ${NAME}
     extra_hosts:
@@ -28,18 +23,6 @@ services:
     # ENVIRONMENT:
     ## Read all config variables from the .env file
     env_file: .env
-
-    # DEVICES:
-    devices:
-      # Use the host fuse device.
-      - /dev/fuse
-      # Add the host uinput device.
-      - /dev/uinput
-      # Add AMD/Intel HW accelerated video encoding/decoding devices (optional)
-      # - /dev/dri
-    # Ensure container access to devices 13:*
-    device_cgroup_rules:
-      - 'c 13:* rmw'
 
     # VOLUMES:
     volumes:
