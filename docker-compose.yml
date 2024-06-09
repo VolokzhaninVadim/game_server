@@ -28,7 +28,7 @@ services:
     # VOLUMES:
     volumes:
       # The location of your home directory.
-      - /home/volokzhanin/docker/steam-headless/home/:/home/default/:rw
+      - /home/volokzhanin/server/repos/media/game_server/home/:/home/default/:rw
 
       # The location where all games should be installed.
       # This path needs to be set as a library path in Steam after logging in.
@@ -38,10 +38,10 @@ services:
       # The Xorg socket. This will be shared with other containers so they can access the X server.
       # Select only one option or leave commented out to not share the Xorg socket with any other Docker containers.
       #   Option #1) Start a X server in the container to share with any other containers.
-      - /home/volokzhanin/docker/steam-headless/.X11-unix/:/tmp/.X11-unix/:rw
+      - /home/volokzhanin/server/repos/media/game_server/.X11-unix/:/tmp/.X11-unix/:rw
       #   Option #2) Use an existing X server running on the host.
       #- /tmp/.X11-unix/:/tmp/.X11-unix/:rw
 
       # Pulse audio socket. This will be shared with other containers so they can access the audio sink.
       # Leave commented out to not share the pulse socket with any other Docker containers.
-      - /home/volokzhanin/docker/steam-headless/pulse/:/tmp/pulse/:rw
+      - /home/volokzhanin/server/repos/media/game_server/pulse/:/tmp/pulse/:rw
