@@ -33,7 +33,7 @@ services:
       # The location where all games should be installed.
       # This path needs to be set as a library path in Steam after logging in.
       # Otherwise, Steam will store games in the home directory above.
-      - /home/volokzhanin/media/games:/media/games/:rw
+      - /mnt/media/games:/media/games/:rw
 
       # The Xorg socket. This will be shared with other containers so they can access the X server.
       # Select only one option or leave commented out to not share the Xorg socket with any other Docker containers.
