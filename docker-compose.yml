@@ -1,4 +1,16 @@
 services:
+  mc-server:
+    image: itzg/minecraft-server:latest
+    container_name: mc-server
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./config_minecraft:/data
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.21.11"
+      MEMORY: "4G"
+    restart: unless-stopped
   steam-headless:
     image: josh5/steam-headless:latest
     restart: unless-stopped
