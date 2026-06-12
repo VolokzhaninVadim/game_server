@@ -1,4 +1,3 @@
-.X11-unix
-home
-pulse
+config_minecraft/*
+config_game_server/*
 .env
