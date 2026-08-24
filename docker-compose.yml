@@ -11,6 +11,7 @@ services:
       VERSION: "1.21.11"
       MEMORY: "4G"
     restart: unless-stopped
+
   steam-headless:
     image: josh5/steam-headless:latest
     restart: unless-stopped
